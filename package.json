@@ -1,0 +1,22 @@
+{
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "this will tell the weather of each n evry location",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahul1237/weather-api.git"
+  },
+  "author": "rahul mahajan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahul1237/weather-api/issues"
+  },
+  "homepage": "https://github.com/rahul1237/weather-api#readme",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
