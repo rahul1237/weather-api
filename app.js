@@ -1,13 +1,18 @@
+const path = require('path')
 const express = require('express')
 const bodyparser = require('body-parser')
 const http = require('http')
+const https = require('https')
 const app = express()
 
 app.use(bodyparser.urlencoded({extended:true}))
 
+// const file = path.join(__dirname,'/public')
+
+// app.use(express.static(file))
+
 app.get('/',function(req,res){
     res.sendFile(__dirname+'/weather.html')
-    // res.send('<h1> rahul mahajan')
 })
 
 app.post('/',function(req,res){
@@ -15,9 +20,9 @@ app.post('/',function(req,res){
     const locat = req.body.place
     const key = 'ea7a226049f088f392cd6c102bd5f5c0'
     const unit = 'metric'
-
     const url = "http://api.openweathermap.org/data/2.5/weather?q=" + locat + "&units=" + unit + "&appid=" + key
-    http.get(url,function(response){
+    
+    const naya_mal = http.get(url,function(response){
         response.on('data',function(data){
             const weatherData = JSON.parse(data)
             const temp = weatherData.main.temp
@@ -36,7 +41,10 @@ app.post('/',function(req,res){
             res.send()
         })
     })
-    // res.send("<h1> rahul mahajan")
+
+    naya_mal.on('error',(error)=>{
+        console.log('an error');
+    })
 })
 
 app.listen(7777,function(){
